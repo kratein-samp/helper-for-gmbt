@@ -17,7 +17,7 @@ local script_vers = 2
 local script_vers_text = "1.1"
 
 local script_path = thisScript().path
-local script_url = ""
+local script_url = "https://raw.githubusercontent.com/kratein-samp/helper-for-arp/master/Lua%20Helper%20for%20noob.lua"
 
 local update_path = getWorkingDirectory() .. "/update.ini"
 local update_url = "https://raw.githubusercontent.com/kratein-samp/helper-for-arp/master/update.ini"
