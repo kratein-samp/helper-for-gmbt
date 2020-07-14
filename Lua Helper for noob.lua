@@ -13,8 +13,8 @@ u8 = encoding.UTF8
 
 update_state = false
 
-local script_vers = 1
-local script_vers_text = "1.0"
+local script_vers = 2
+local script_vers_text = "1.1"
 
 local script_path = thisScript().path
 local script_url = "https://raw.githubusercontent.com/kratein-samp/helper-for-arp/master/Lua%20Helper%20for%20noob.lua"
