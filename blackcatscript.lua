@@ -1,8 +1,8 @@
-script_name('Autoupdate script') -- íàçâàíèå ñêðèïòà
-script_author('FORMYS') -- àâòîð ñêðèïòà
-script_description('Autoupdate') -- îïèñàíèå ñêðèïòà
+script_name('Autoupdate script') -- название скрипта
+script_author('FORMYS') -- автор скрипта
+script_description('Autoupdate') -- описание скрипта
 
-require "lib.moonloader" -- ïîäêëþ÷åíèå áèáëèîòåêè
+require "lib.moonloader" -- подключение библиотеки
 local dlstatus = require('moonloader').download_status
 local inicfg = require 'inicfg'
 local keys = require "vkeys"
@@ -16,10 +16,10 @@ update_state = false
 local script_vers = 2
 local script_vers_text = "1.02"
 
-local update_url = "https://raw.githubusercontent.com/kratein-samp/helper-for-gmbt/master/update.ini" -- òóò òîæå ñâîþ ññûëêó
-local update_path = getWorkingDirectory() .. "/update.ini" -- è òóò ñâîþ ññûëêó
+local update_url = "https://raw.githubusercontent.com/kratein-samp/helper-for-gmbt/master/update.ini" -- тут тоже свою ссылку
+local update_path = getWorkingDirectory() .. "/update.ini" -- и тут свою ссылку
 
-local script_url = "https://github.com/kratein-samp/helper-for-gmbt/blob/master/blackcatscript.lua?raw=true" -- òóò ñâîþ ññûëêó
+local script_url = "https://github.com/kratein-samp/helper-for-gmbt/blob/master/blackcatscript.lua?raw=true" -- тут свою ссылку
 local script_path = thisScript().path
 
 
@@ -36,10 +36,10 @@ function main()
         if status == dlstatus.STATUS_ENDDOWNLOADDATA then
             updateIni = inicfg.load(nil, update_path)
             if tonumber(updateIni.info.vers) > script_vers then
-                sampAddChatMessage("Åñòü îáíîâëåíèå! Âåðñèÿ: " .. updateIni.info.vers_text, -1)
+                sampAddChatMessage("Есть обновление! Версия: " .. updateIni.info.vers_text, -1)
                 update_state = true
 			else
-				sampAddChatMessage("Îáíîâëåíèé íåò!", -1)
+				sampAddChatMessage("Обновлений нет!", -1)
 			end
             os.remove(update_path)
         end
@@ -51,7 +51,7 @@ function main()
         if update_state then
             downloadUrlToFile(script_url, script_path, function(id, status)
                 if status == dlstatus.STATUS_ENDDOWNLOADDATA then
-                    sampAddChatMessage("Ñêðèïò óñïåøíî îáíîâëåí!", -1)
+                    sampAddChatMessage("Скрипт успешно обновлен!", -1)
                     thisScript():reload()
                 end
             end)
@@ -62,5 +62,5 @@ function main()
 end
 
 function cmd_update(arg)
-    sampShowDialog(1000, "Àâòîîáíîâëåíèå v2.0", "{FFFFFF}Ýòî óðîê ïî îáíîâëåíèþ\n{FFF000}Íîâàÿ âåðñèÿ", "Çàêðûòü", "", 0)
+    sampShowDialog(1000, "Автообновление v2.0", "{FFFFFF}Это урок по обновлению\n{FFF000}Новая версия", "Закрыть", "", 0)
 end
